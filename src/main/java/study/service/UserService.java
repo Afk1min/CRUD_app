@@ -7,7 +7,7 @@ public interface UserService {
 
     void addUser(User user);
 
-    void deleteUser(User user);
+    void deleteUser(int id);
 
     List<User> getAllUsers();
 

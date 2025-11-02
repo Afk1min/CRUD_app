@@ -2,6 +2,7 @@ package study.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import study.model.User;
 import study.repository.UserDao;
 
@@ -14,26 +15,31 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
+    @Transactional
     public void addUser(User user) {
         userDao.addUser(user);
     }
 
     @Override
-    public void deleteUser(User user) {
-        userDao.deleteUser(user);
+    @Transactional
+    public void deleteUser(int id) {
+        userDao.deleteUser(id);
     }
 
     @Override
+    @Transactional
     public List<User> getAllUsers() {
         return userDao.getAllUsers();
     }
 
     @Override
+    @Transactional
     public void updateUser(User user) {
         userDao.updateUser(user);
     }
 
     @Override
+    @Transactional
     public User getUserById(int id) {
         return userDao.getUserById(id);
     }

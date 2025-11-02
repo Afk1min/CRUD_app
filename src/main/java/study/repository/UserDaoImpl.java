@@ -1,7 +1,7 @@
 package study.repository;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -22,8 +22,11 @@ public class UserDaoImpl implements UserDao{
     }
 
     @Override
-    public void deleteUser(User user) {
-        entityManager.remove(user);
+    public void deleteUser(int id) {
+        User user = entityManager.find(User.class, id);
+        if (user != null) {
+            entityManager.remove(user);
+        }
     }
 
     @Override
